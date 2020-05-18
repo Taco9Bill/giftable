@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/giftable/static/css/main.08b8c344.chunk.css",
-    "main.js": "/giftable/static/js/main.2ac2a7e3.chunk.js",
-    "main.js.map": "/giftable/static/js/main.2ac2a7e3.chunk.js.map",
+    "main.js": "/giftable/static/js/main.01c58d5d.chunk.js",
+    "main.js.map": "/giftable/static/js/main.01c58d5d.chunk.js.map",
     "runtime-main.js": "/giftable/static/js/runtime-main.7ab7017d.js",
     "runtime-main.js.map": "/giftable/static/js/runtime-main.7ab7017d.js.map",
     "static/js/2.a7dfe936.chunk.js": "/giftable/static/js/2.a7dfe936.chunk.js",
     "static/js/2.a7dfe936.chunk.js.map": "/giftable/static/js/2.a7dfe936.chunk.js.map",
     "index.html": "/giftable/index.html",
-    "precache-manifest.16d1b49d280153ee6b9b10dc8c449d9e.js": "/giftable/precache-manifest.16d1b49d280153ee6b9b10dc8c449d9e.js",
+    "precache-manifest.c60739e0b5e5b2cd7a62e57be3aaebab.js": "/giftable/precache-manifest.c60739e0b5e5b2cd7a62e57be3aaebab.js",
     "service-worker.js": "/giftable/service-worker.js",
     "static/css/main.08b8c344.chunk.css.map": "/giftable/static/css/main.08b8c344.chunk.css.map",
     "static/js/2.a7dfe936.chunk.js.LICENSE.txt": "/giftable/static/js/2.a7dfe936.chunk.js.LICENSE.txt",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.7ab7017d.js",
     "static/js/2.a7dfe936.chunk.js",
     "static/css/main.08b8c344.chunk.css",
-    "static/js/main.2ac2a7e3.chunk.js"
+    "static/js/main.01c58d5d.chunk.js"
   ]
 }

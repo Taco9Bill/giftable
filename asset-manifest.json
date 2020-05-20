@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/giftable/static/css/main.ca27f7ed.chunk.css",
-    "main.js": "/giftable/static/js/main.2801c5be.chunk.js",
-    "main.js.map": "/giftable/static/js/main.2801c5be.chunk.js.map",
+    "main.css": "/giftable/static/css/main.136d5a16.chunk.css",
+    "main.js": "/giftable/static/js/main.eba62cdf.chunk.js",
+    "main.js.map": "/giftable/static/js/main.eba62cdf.chunk.js.map",
     "runtime-main.js": "/giftable/static/js/runtime-main.7ab7017d.js",
     "runtime-main.js.map": "/giftable/static/js/runtime-main.7ab7017d.js.map",
     "static/js/2.a7dfe936.chunk.js": "/giftable/static/js/2.a7dfe936.chunk.js",
     "static/js/2.a7dfe936.chunk.js.map": "/giftable/static/js/2.a7dfe936.chunk.js.map",
     "index.html": "/giftable/index.html",
-    "precache-manifest.fc601890baec8498112fe33336de221b.js": "/giftable/precache-manifest.fc601890baec8498112fe33336de221b.js",
+    "precache-manifest.6fd10bc5e01b85e9a3bd6085b86b9a4a.js": "/giftable/precache-manifest.6fd10bc5e01b85e9a3bd6085b86b9a4a.js",
     "service-worker.js": "/giftable/service-worker.js",
-    "static/css/main.ca27f7ed.chunk.css.map": "/giftable/static/css/main.ca27f7ed.chunk.css.map",
+    "static/css/main.136d5a16.chunk.css.map": "/giftable/static/css/main.136d5a16.chunk.css.map",
     "static/js/2.a7dfe936.chunk.js.LICENSE.txt": "/giftable/static/js/2.a7dfe936.chunk.js.LICENSE.txt",
     "static/media/App.css": "/giftable/static/media/atsumare.877c0cd7.ttf"
   },
   "entrypoints": [
     "static/js/runtime-main.7ab7017d.js",
     "static/js/2.a7dfe936.chunk.js",
-    "static/css/main.ca27f7ed.chunk.css",
-    "static/js/main.2801c5be.chunk.js"
+    "static/css/main.136d5a16.chunk.css",
+    "static/js/main.eba62cdf.chunk.js"
   ]
 }

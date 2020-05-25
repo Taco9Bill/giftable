@@ -1,0 +1,89 @@
+.mori-gift {
+  width: 100%;
+}
+.gift {
+  width: 100%;
+  padding: 0;
+}
+.gift .name {
+  display: inline-block;
+  width: 70%;
+  padding: 0.25em 0;
+  vertical-align: middle;
+}
+.gift .alt-color > img, .alt-entry img {
+  width: 4.5em;
+}
+.gift.gift-group .alt-color .alt-entry img {
+  display: block;
+  margin: 0 auto;
+}
+.gift .alts {
+  width: 30%;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0.5em auto;
+}
+.gift.gift-group .name {
+  color: #81725A;
+}
+.gift.gift-group .name.hidden {
+  display: none;
+}
+
+.gift.gift-group .alts {
+  width: 100%;
+  display: block;
+}
+.gift .alts .alt-color {
+  width: 100%;
+  margin: 0.25em 0 0.75em 0;
+}
+.gift.gift-group .alts .alt-entry {
+  display: inline-block;
+  width: 30%;
+  vertical-align: middle;
+  font-size: 0.75em;
+}
+
+.gift.gift-group .alts .alt-color .alt-entry .name {
+  background-color: gold;
+  border-radius: 1em;
+  padding: 0.25em 0.5em;
+  display: inline-block;
+  width: auto;
+  max-width: 6.75em;
+  margin: -0.375em auto 0 auto;
+  color: #444;
+}
+
+.gift .alts .alt-color .alt-entry .colors {
+  
+}
+.gift.gift-group  .alts .judgements {
+  display: inline-block;
+  vertical-align: middle;
+  width: 63%;
+  color: #81725A;
+}
+.style-active {
+  /*background-color: orchid;*/
+}
+.style-colorful {
+
+}
+.style-cool {
+  /*background-color: cornflowerblue;*/
+}
+.style-cute {
+  /*background-color: mistyrose;*/
+}
+.style-elegant {
+  /*background-color: orchid;*/
+}
+.style-gorgeous {
+
+}
+.style-simple {
+
+}

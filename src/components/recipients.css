@@ -1,0 +1,67 @@
+.mori-search {
+  margin: 1em 0;
+}
+.mori-search-input {
+  width: 15em;
+  border-radius: 0.6em;
+  padding: 0.75em 1em 0.5em 1em;
+  background-color: white;
+  margin: 0 auto;
+}
+.mori-search-input input[type="text"] {
+  width: 100%;
+  border: none;
+  border-radius: 0;
+  border-bottom: 2px dashed burlywood;
+  padding: 0;
+  padding-bottom: 0.25em;
+  caret-color: green;
+  line-height: 1;
+}
+
+.mori-search-input input[type="text"]:focus {
+  outline: none;
+}
+
+.vlgr {
+  margin: 0.25em 0.25em;
+}
+.vlgr img {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 0.25em;
+  width: 5.25em;
+  background-color: lightseagreen;
+  /*background-color: #1FC0B5;*/
+  border-radius:50%;
+    
+}
+.vlgr.selected img {
+  background-image:
+    radial-gradient(transparent 62%, cyan 67%),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 0.75em,
+      turquoise 0.75em,
+      turquoise 1.5em
+    );
+}
+.vlgr .name {
+  display: block;
+  width: 6em;
+  margin: 0 auto;
+  color: #81725A;
+}
+
+/*
+@media (min-width:480px){
+  .vlgr {
+    position: relative;
+    width: 8em;
+    margin: 0.5em;
+    margin-bottom: 3em;
+    padding: 0.75em 0;
+  }
+}
+*/

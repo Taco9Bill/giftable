@@ -50,7 +50,7 @@ function makeCatalog(jsonItems, inclCats){
             items.push(makeGiftItem(jItem));
         }
     }
-    items.sort( (a, b) => { return a.name > b.name } )
+    items.sort(GiftItem.sortComparator)
     return new Catalog(items);
 }
 function makeRoster(jsonVillagers){
@@ -58,6 +58,7 @@ function makeRoster(jsonVillagers){
     for(const jVillager of jsonVillagers){
         members.push(makeVillager(jVillager));
     }
+    members.sort(Villager.sortComparator);
     return new Roster(members);
 }
 

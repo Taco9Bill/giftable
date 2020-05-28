@@ -1,6 +1,6 @@
 import React from 'react';
-import {Recipient} from 'components/recipients.js'
-import './gifts.css'
+import {Recipient} from 'components/recipients.js';
+import './gifts.css';
 
 class GiftLookup extends React.Component {
     render() {
@@ -127,7 +127,7 @@ class GiftSearchList extends React.Component {
         });
         if(exact.length > 0)
             found = exact;
-        const showVariants = (found.length == 1);
+        const showVariants = (found.length === 1);
 
         if(found.length === 0){
             return (

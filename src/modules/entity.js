@@ -102,7 +102,7 @@ class Catalog {
         return found;
     }
     findByStyle(villager, limitCats, limit){
-        if(limit == undefined){
+        if(limit === undefined){
             limit = 200;
         }
         let results = {};
@@ -181,7 +181,7 @@ class Roster {
         });
     }
     findByStyle(item, limit){
-        if(limit == undefined){
+        if(limit === undefined){
             limit = 200;
         }
         let results = [];

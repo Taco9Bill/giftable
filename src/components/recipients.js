@@ -1,5 +1,5 @@
 import React from 'react';
-import './recipients.css'
+import './recipients.css';
 
 class RecipientLookup extends React.Component {
     render() {

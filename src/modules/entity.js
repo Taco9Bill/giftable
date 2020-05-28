@@ -48,6 +48,16 @@ class GiftItem {
     get defaultVariant(){
         return this._variants.get(this._defaultVariantId);
     }
+    static sortComparator(a, b) {
+        if (a.name < b.name) {
+             return -1;
+        }
+        if (a.name > b.name) {
+            return 1;
+        }
+        // names must be equal
+        return 0;
+    }
 }
 
 class GiftItemVariant {
@@ -153,6 +163,16 @@ class Villager{
             }
         }
         return { liked: false };
+    }
+    static sortComparator(a, b){
+        if (a.name < b.name) {
+             return -1;
+        }
+        if (a.name > b.name) {
+            return 1;
+        }
+        // names must be equal
+        return 0;
     }
 }
 

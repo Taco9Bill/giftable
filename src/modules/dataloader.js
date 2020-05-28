@@ -26,7 +26,7 @@ function makeGiftItem(jsonItem) {
     return new GiftItem(
         '_' + defaultVariant.uniqueEntryId,
         jsonItem.name.toLowerCase(),
-        defaultVariant.sellPrice,
+        defaultVariant.sell,
         vMap,
         (jsonItem.style && jsonItem.style.toLowerCase()) || null,
         jsonItem.sourceSheet

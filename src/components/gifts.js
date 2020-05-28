@@ -114,16 +114,41 @@ class GiftSearchResult extends React.Component {
     }
 }
 
+const itemNameComparator = (query) => {
+    return (a, b) => {
+        if((a.name.indexOf(query) === 0 && b.name.indexOf(query) === 0) ||
+           (a.name.indexOf(query) !== 0 && b.name.indexOf(query) !== 0)) {
+            if (a.name < b.name) {
+                return -1;
+            }
+            if (a.name > b.name) {
+                return 1;
+            }
+            // names must be equal
+            return 0;
+        }
+        if (a.name.indexOf(query) === 0) {
+             return -1;
+        }
+        if (b.name.indexOf(query) === 0) {
+            return 1;
+        }
+        // impossible state
+        console.log('impossible state reached');
+        return 0;
+    };
+};
+
 class GiftSearchList extends React.Component {
     render() {
-        const name = this.props.giftName;
-        if(!name) {
+        const query = this.props.giftName;
+        if(!query) {
             return '';//(<div className="gResults"></div>);
         }
-        const items = this.props.items;
-        let found = items.findByNameLike(this.props.giftName);
+        const catalog = this.props.items;
+        let found = catalog.findByNameLike(this.props.giftName, itemNameComparator(query));
         const exact = found.filter(item => {
-            return item.name.toLowerCase() == name.toLowerCase();
+            return item.name.toLowerCase() == query.toLowerCase();
         });
         if(exact.length > 0)
             found = exact;

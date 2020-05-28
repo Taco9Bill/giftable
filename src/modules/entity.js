@@ -91,24 +91,31 @@ class Catalog {
         }
         return found;
     }
-    findByNameLike(name) {
+    findByNameLike(name, comparator) {
         const searchName = name.toLowerCase();
         let found = null;
-        /* Match any substring */
         if(searchName.indexOf(' ') !== -1 || searchName.indexOf('-') !== -1){
+            /* Match any substring */
             found = this._items.filter(item => {
                 return item.name.toLowerCase().indexOf(searchName) !== -1;
             });
-            return found;
+            /* override comparator */
+            comparator = GiftItem.sortComparator;
         }
-        /* Match substring in word parts only */
-        found = this._items.filter(item => {
-            let parts = item.name.toLowerCase().split(/[\s-]+/);
-            const isMatch = parts.reduce( (tested, part) => {
-                return tested || part.indexOf(searchName) === 0;
-            }, false);
-            return isMatch;
-        });
+        else {
+            /* Match substring in word parts only */
+            found = this._items.filter(item => {
+                let parts = item.name.toLowerCase().split(/[\s-]+/);
+                const isMatch = parts.reduce( (tested, part) => {
+                    return tested || part.indexOf(searchName) === 0;
+                }, false);
+                return isMatch;
+            });
+        }
+        /* custom sort if passed */
+        if(comparator !== undefined){
+            found.sort(comparator);
+        }
         return found;
     }
     findByStyle(villager, limitCats, limit){

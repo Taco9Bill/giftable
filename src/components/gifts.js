@@ -1,6 +1,7 @@
 import React from 'react';
-import {Recipient} from 'components/recipients.js';
-import './gifts.css';
+import {Recipient} from 'components/recipients.js'
+import {GiftBoxIcon, AltGiftBoxIcon, ItemColorsIcon} from 'components/icon.js';
+import './gifts.css'
 
 class GiftLookup extends React.Component {
     render() {
@@ -57,14 +58,25 @@ class GiftSearchResult extends React.Component {
     render() {
         const item = this.props.value;
         const recipients = this.props.recipients;
+        const returnGiftMsg = (sellPrice) => {
+            return (sellPrice >= 2500 && <AltGiftBoxIcon/>)
+                || (sellPrice >= 250 && <GiftBoxIcon/>)
+                || ''
+        };
         if(this.props.showVariants === false){
             return (
                 <div className="gift" onClick={this.handleClick}>
-                    <span className="name">{item.name}</span>
                     <div className="alts">
                         <div className="alt-color" key={item.defaultVariant.id}>
                             <img src={item.defaultVariant.imgUrl} alt={item.name} />
+                            <div className="icons">
+                                {returnGiftMsg(item.sell)}
+                            </div>
                         </div>
+                    </div>
+                    <div className="detail">
+                      <div className="name">{item.name}</div>
+                      <div className={`quality style-${item.style}`}>{item.style}</div>
                     </div>
                 </div>
             );
@@ -84,7 +96,13 @@ class GiftSearchResult extends React.Component {
             }
             return (
                 <div className="gift gift-group" onClick={this.handleClick}>
-                    <span className="name">{item.name} <span className={`quality style-${item.style}`}>({item.style})</span></span>
+                    <div className="detail">
+                      <div><span className="name">{item.name}</span></div>
+                      <div className={`quality style-${item.style}`}>{item.style}</div>
+                      <div className="icons">
+                          {returnGiftMsg(item.sell)}
+                      </div>
+                    </div>
                     <div className="alts">
                     {
                         variantIds.map( (vId) => {
@@ -98,6 +116,9 @@ class GiftSearchResult extends React.Component {
                                         variant.name &&
                                         <span className="name">{variant.name}</span>
                                     }
+                                    <div className="icons">
+                                        <ItemColorsIcon colors={variant.colors} />
+                                    </div>
                                     </div>
                                     <GiftJudgements
                                         judgements={judgements}

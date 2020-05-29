@@ -1,0 +1,155 @@
+.colors {
+	width: 1em;
+	height: 1em;
+	background-color: magenta;
+	border: 1px solid gray;
+	cursor: help;
+}
+.gift-group .alt-color .alt-entry {
+	position: relative;
+}
+.color1-beige, .color1-colorful.color2-beige {
+	background-color: moccasin;
+}
+.color2-beige {
+	background-image: linear-gradient(to bottom right, transparent 50%, moccasin 50%);
+}
+.color1-black, .color1-colorful.color2-black {
+	background-color: black;
+}
+.color2-black {
+	background-image: linear-gradient(to bottom right, transparent 50%, black 50%);
+}
+.color1-blue, .color1-colorful.color2-blue {
+	background-color: royalblue;
+}
+.color2-blue {
+	background-image: linear-gradient(to bottom right, transparent 50%, royalblue 50%);
+}
+.color1-brown, .color1-colorful.color2-brown {
+	background-color: sienna;
+}
+.color2-brown {
+	background-image: linear-gradient(to bottom right, transparent 50%, sienna 50%);
+}
+.color1-gray, .color1-colorful.color2-gray {
+	background-color: darkgray;
+}
+.color2-gray {
+	background-image: linear-gradient(to bottom right, transparent 50%, darkgray 50%);
+}
+.color1-green, .color1-colorful.color2-green, .color1-gren, .color1-colorful.color2-gren {
+	background-color: limegreen;
+}
+.color2-green, .color2-gren {
+	background-image: linear-gradient(to bottom right, transparent 50%, limegreen 50%);
+}
+.color1-lightblue, .color1-colorful.color2-lightblue {
+	background-color: deepskyblue;
+}
+.color2-lightblue {
+	background-image: linear-gradient(to bottom right, transparent 50%, deepskyblue 50%);
+}
+.color1-orange, .color1-colorful.color2-orange {
+	background-color: orange;
+}
+.color2-orange {
+	background-image: linear-gradient(to bottom right, transparent 50%, orange 50%);
+}
+.color1-pink, .color1-colorful.color2-pink {
+	background-color: hotpink;
+}
+.color2-pink {
+	background-image: linear-gradient(to bottom right, transparent 50%, hotpink 50%);
+}
+.color1-purple, .color1-colorful.color2-purple {
+	background-color: blueviolet;
+}
+.color2-purple {
+	background-image: linear-gradient(to bottom right, transparent 50%, blueviolet 50%);
+}
+.color1-red, .color1-colorful.color2-red {
+	background-color: crimson;
+}
+.color2-red {
+	background-image: linear-gradient(to bottom right, transparent 50%, crimson 50%);
+}
+.color1-white, .color1-colorful.color2-white {
+	background-color: white;
+}
+.color2-white {
+	background-image: linear-gradient(to bottom right, transparent 50%, white 50%);
+}
+.color1-yellow, .color1-colorful.color2-yellow {
+	background-color: #FFE135;
+}
+.color2-yellow {
+	background-image: linear-gradient(to bottom right, transparent 50%, #FFE135 50%);
+}
+.color1-colorful {
+	background-image:linear-gradient(
+		to top left,
+		transparent 50%,
+		mediumorchid 50%,
+		cornflowerblue 58%,
+		limegreen 68%,
+		yellow 78%,
+		orange 88%,
+		red 100%);
+}
+.color2-colorful {
+	background-image:linear-gradient(
+		to bottom right,
+		transparent 50%,
+		mediumorchid 50%,
+		cornflowerblue 58%,
+		limegreen 68%,
+		yellow 78%,
+		orange 88%,
+		red 100%);
+}
+.color1-colorful.color2-colorful {
+	background-image:linear-gradient(
+		to bottom right,
+		red 0%,
+		orange 12%,
+		yellow 22%,
+		limegreen 32%,
+		cornflowerblue 42%,
+		mediumorchid 50%,
+		mediumorchid 50%,
+		cornflowerblue 58%,
+		limegreen 68%,
+		yellow 78%,
+		orange 88%,
+		red 100%);
+}
+
+/******************************************/
+.quality {
+	display: inline-block;
+    vertical-align: middle;
+    padding: 0.25em 0.5em;
+    font-size: 0.7em;
+    border-radius: 0.75em;
+    color: white;
+    line-height: 1;
+}
+.style-active {
+  	background-color: limegreen;
+}
+.style-cool {
+  	background-color: cornflowerblue;
+}
+.style-cute {
+  	background-color: hotpink;
+}
+.style-elegant {
+	background-color: darkorchid;
+}
+.style-gorgeous {
+    background-color: #c22c19;
+}
+.style-simple {
+	background-color: goldenrod;
+}

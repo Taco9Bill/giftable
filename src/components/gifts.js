@@ -1,6 +1,6 @@
 import React from 'react';
 import {Recipient} from 'components/recipients.js'
-import {GiftBoxIcon, AltGiftBoxIcon} from 'components/icon.js';
+import {GiftBoxIcon, AltGiftBoxIcon, ItemColorsIcon} from 'components/icon.js';
 import './gifts.css'
 
 class GiftLookup extends React.Component {
@@ -75,9 +75,8 @@ class GiftSearchResult extends React.Component {
                         </div>
                     </div>
                     <div className="detail">
-                      <span className="name">{item.name}</span>
-                      <span className={`quality style-${item.style}`}>({item.style})</span>
-                      <span></span>
+                      <div className="name">{item.name}</div>
+                      <div className={`quality style-${item.style}`}>{item.style}</div>
                     </div>
                 </div>
             );
@@ -98,8 +97,8 @@ class GiftSearchResult extends React.Component {
             return (
                 <div className="gift gift-group" onClick={this.handleClick}>
                     <div className="detail">
-                      <span className="name">{item.name}</span>
-                      <span className={`quality style-${item.style}`}>({item.style})</span>
+                      <div><span className="name">{item.name}</span></div>
+                      <div className={`quality style-${item.style}`}>{item.style}</div>
                       <div className="icons">
                           {returnGiftMsg(item.sell)}
                       </div>
@@ -117,6 +116,9 @@ class GiftSearchResult extends React.Component {
                                         variant.name &&
                                         <span className="name">{variant.name}</span>
                                     }
+                                    <div className="icons">
+                                        <ItemColorsIcon colors={variant.colors} />
+                                    </div>
                                     </div>
                                     <GiftJudgements
                                         judgements={judgements}

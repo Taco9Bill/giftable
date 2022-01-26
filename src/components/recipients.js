@@ -1,4 +1,5 @@
 import React from 'react';
+import { StyleIcon } from 'components/icon.js';
 import './recipients.css';
 
 class RecipientLookup extends React.Component {
@@ -28,10 +29,28 @@ class Recipient extends React.Component {
     }
     render() {
         const recipient = this.props.value;
+        let style1Hint = null;
+        let style2Hint = null;
+        let colorHint = null;
+        if(this.props.showHints !== undefined && this.props.showHints){
+            style1Hint = <StyleIcon styleName={recipient.stylePrefs[0]} />
+            style2Hint = <StyleIcon styleName={recipient.stylePrefs[1]} />
+            colorHint = <ul><li>{recipient.colorPrefs[0]}</li><li>{recipient.colorPrefs[1]}</li></ul>
+        }
+
+
+        let reason = null;
+        if(this.props.reason){
+            reason = <div>{this.props.reason}</div>
+        }
         return (
             <div className={`vlgr${this.props.selected ? ' selected': ''}`} onClick={this.handleClick}>
               <img src={recipient.iconUrl} alt={recipient.name}/>
               <span className="name">{recipient.name}</span>
+              {style1Hint}
+              {style2Hint}
+              {colorHint}
+              {reason}
             </div>
         );
     }
@@ -51,7 +70,8 @@ class RecipientList extends React.Component {
                                 <Recipient
                                     value={v}
                                     selected={true}
-                                    toggleCallback={this.props.toggleCallback} />
+                                    toggleCallback={this.props.toggleCallback}
+                                    showHints={true} />
                             </div>
                         );
                     })

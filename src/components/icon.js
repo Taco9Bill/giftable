@@ -7,14 +7,14 @@ import './icon.css';
 
 class GiftBoxIcon extends React.Component {
 	render(){
-		const desc = 'Will receive gift or bells in return';
+		const desc = 'Will receive gift in return';
 		return <img src={Present} alt='gift box badge' title={desc} />;
 	}
 }
 
 class AltGiftBoxIcon extends React.Component {
 	render(){
-		const desc = 'Will receive gift in return';
+		const desc = 'Will receive gift in return, chance to receive photo if best friends';
 		return <img src={BlueRibbonPresent} alt="special gift box badge" title={desc} />;
 	}
 }
@@ -42,4 +42,13 @@ class ItemColorsIcon extends React.Component {
 	}
 }
 
-export {BellBagIcon, GiftBoxIcon, ItemColorsIcon, AltGiftBoxIcon, GiftWrapIcon};
+class StyleIcon extends React.Component {
+	render(){
+		const styleName = this.props.styleName;
+		const icon = <div className={`quality style-${styleName}`}>{styleName}</div>;
+		return icon;
+	}
+}
+
+
+export {BellBagIcon, GiftBoxIcon, ItemColorsIcon, AltGiftBoxIcon, GiftWrapIcon, StyleIcon};

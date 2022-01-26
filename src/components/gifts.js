@@ -1,6 +1,6 @@
 import React from 'react';
 import {Recipient} from 'components/recipients.js'
-import {GiftBoxIcon, AltGiftBoxIcon, ItemColorsIcon} from 'components/icon.js';
+import {GiftBoxIcon, AltGiftBoxIcon, ItemColorsIcon, StyleIcon} from 'components/icon.js';
 import './gifts.css'
 
 class GiftLookup extends React.Component {
@@ -33,7 +33,8 @@ class GiftJudgements extends React.Component {
                         value={j.who}
                         selected={false}
                         key={'j_'+j.who.id}
-                        toggleCallback={nullCallback} />
+                        toggleCallback={nullCallback}
+                        reason={j.reason} />
                 )
             });
         }
@@ -59,10 +60,15 @@ class GiftSearchResult extends React.Component {
         const item = this.props.value;
         const recipients = this.props.recipients;
         const returnGiftMsg = (sellPrice) => {
-            return (sellPrice >= 2500 && <AltGiftBoxIcon/>)
+            return (sellPrice >= 750 && <AltGiftBoxIcon/>)
                 || (sellPrice >= 250 && <GiftBoxIcon/>)
                 || ''
         };
+        const style1Hint = <div className={`quality style-${item.style[0]}`}>{item.style[0]}</div>;
+        let style2Hint = null;
+        if(item.style[1] && item.style[1] !== item.style[0]){
+            style2Hint = <div className={`quality style-${item.style[1]}`}>{item.style[1]}</div>;
+        }
         if(this.props.showVariants === false){
             return (
                 <div className="gift" onClick={this.handleClick}>
@@ -76,7 +82,8 @@ class GiftSearchResult extends React.Component {
                     </div>
                     <div className="detail">
                       <div className="name">{item.name}</div>
-                      <div className={`quality style-${item.style}`}>{item.style}</div>
+                      {style1Hint}
+                      {style2Hint}
                     </div>
                 </div>
             );
@@ -98,7 +105,8 @@ class GiftSearchResult extends React.Component {
                 <div className="gift gift-group" onClick={this.handleClick}>
                     <div className="detail">
                       <div><span className="name">{item.name}</span></div>
-                      <div className={`quality style-${item.style}`}>{item.style}</div>
+                      {style1Hint}
+                      {style2Hint}
                       <div className="icons">
                           {returnGiftMsg(item.sell)}
                       </div>

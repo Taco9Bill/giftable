@@ -1,8 +1,4 @@
 @charset "UTF-8";
-@font-face {
-  font-family: 'Atsumare';
-  src: url('./fonts/atsumare.ttf');
-}
 
 .mori {
   text-align: center;

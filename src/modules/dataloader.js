@@ -23,12 +23,14 @@ function makeGiftItem(jsonItem) {
         );
         vMap.set(jVariant.uniqueEntryId, variant);
     }
+    let styles = [(jsonItem.style1 && jsonItem.style1.toLowerCase()) || null,
+        (jsonItem.style2 && jsonItem.style2.toLowerCase()) || null]
     return new GiftItem(
         '_' + defaultVariant.uniqueEntryId,
         jsonItem.name.toLowerCase(),
         defaultVariant.sell,
         vMap,
-        (jsonItem.style && jsonItem.style.toLowerCase()) || null,
+        styles,
         jsonItem.sourceSheet
     );
 }

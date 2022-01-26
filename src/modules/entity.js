@@ -157,8 +157,11 @@ class Villager{
 
     }
     checkGiftStyle(item){
-        if(this.stylePrefs.includes(item.style)){
-            return { liked: true, reason: item.style };
+        if(this.stylePrefs.includes(item.style[0])){
+            return { liked: true, reason: item.style[0] };
+        }
+        else if(this.stylePrefs.includes(item.style[1])){
+            return { liked: true, reason: item.style[1] };
         }
         return { liked: false };
     }

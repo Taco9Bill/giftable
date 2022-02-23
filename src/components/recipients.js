@@ -44,13 +44,12 @@ class Recipient extends React.Component {
             reason = <div>{this.props.reason}</div>
         }
         return (
-            <div className={`vlgr${this.props.selected ? ' selected': ''}`} onClick={this.handleClick}>
-              <img src={recipient.iconUrl} alt={recipient.name}/>
+            <div className={`vlgr${this.props.selected ? ' selected': ''}`}>
+              <img src={recipient.iconUrl} alt={recipient.name} onClick={this.handleClick}/>
               <span className="name">{recipient.name}</span>
               {style1Hint}
               {style2Hint}
               {colorHint}
-              {reason}
             </div>
         );
     }

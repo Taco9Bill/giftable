@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleIcon } from 'components/icon.js';
+import { StyleIcon, ItemColorsIcon } from 'components/icon.js';
 import './recipients.css';
 
 class RecipientLookup extends React.Component {
@@ -35,7 +35,7 @@ class Recipient extends React.Component {
         if(this.props.showHints !== undefined && this.props.showHints){
             style1Hint = <StyleIcon styleName={recipient.stylePrefs[0]} />
             style2Hint = <StyleIcon styleName={recipient.stylePrefs[1]} />
-            colorHint = <ul><li>{recipient.colorPrefs[0]}</li><li>{recipient.colorPrefs[1]}</li></ul>
+            colorHint = <ItemColorsIcon colors={recipient.colorPrefs} />
         }
 
 

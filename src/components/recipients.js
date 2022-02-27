@@ -17,6 +17,39 @@ class RecipientLookup extends React.Component {
     }
 }
 
+class MatchedPreferenceHints extends React.Component {
+
+    render(){
+        const {attributes} = this.props
+        return(
+            <ul>
+            {
+              attributes.map( attr => {
+                return (<li key={attr}>{attr}</li>)
+              })
+            }
+            </ul>
+        )
+    }
+}
+
+class PreferenceHints extends React.Component {
+
+    render(){
+        const {styles, colors} = this.props
+        const [style1, style2] = styles
+        return (
+            <div>
+                <StyleIcon styleName={style1} />
+            {
+              style1 != style2 && <StyleIcon styleName={style2} /> || null
+            }
+                <ItemColorsIcon colors={colors} />
+            </div>
+        )
+    }
+}
+
 class Recipient extends React.Component {
     constructor(props) {
         super(props);
@@ -28,37 +61,20 @@ class Recipient extends React.Component {
         }
     }
     render() {
-        const recipient = this.props.value;
-        let style1Hint = null;
-        let style2Hint = null;
-        let colorHint = null;
-        if(this.props.showHints !== undefined && this.props.showHints){
-            style1Hint = <StyleIcon styleName={recipient.stylePrefs[0]} />
-            style2Hint = <StyleIcon styleName={recipient.stylePrefs[1]} />
-            colorHint = <ItemColorsIcon colors={recipient.colorPrefs} />
-        }
+        const {
+            value: recipient,
+            reason: reasons,
+            showHints = false,
+            selected = false
 
+        } = this.props;
 
-        let reason = null;
-        if(this.props.reason){
-            reason = (
-                <ul>
-                  {
-                    this.props.reason.map( attr => {
-                        return <li>{attr}</li>
-                    })
-                  }
-                </ul>
-            )
-        }
         return (
-            <div className={`vlgr${this.props.selected ? ' selected': ''}`}>
+            <div className={`vlgr${selected ? ' selected': ''}`}>
               <img src={recipient.iconUrl} alt={recipient.name} onClick={this.handleClick}/>
               <span className="name">{recipient.name}</span>
-              {style1Hint}
-              {style2Hint}
-              {colorHint}
-              {reason}
+              { showHints && <PreferenceHints styles={recipient.stylePrefs} colors={recipient.colorPrefs} /> || null}
+              { reasons && <MatchedPreferenceHints attributes={reasons} /> || null}
             </div>
         );
     }

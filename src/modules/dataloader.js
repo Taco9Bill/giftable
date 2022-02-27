@@ -12,41 +12,45 @@ const getImageUrl = (jsonVariant) => {
 };
 
 function makeGiftItem(jsonItem) {
-    let vMap = new Map();
-    const defaultVariant = jsonItem.variants[0];
-    for(const jVariant of jsonItem.variants){
-        const variant = new GiftItemVariant(
-            jVariant.uniqueEntryId,
-            jVariant.variation,
-            jVariant.colors.map(c => c.toLowerCase()),
-            getImageUrl(jVariant)
-        );
-        vMap.set(jVariant.uniqueEntryId, variant);
+    const {
+        name, style1, style2, sourceSheet: category, variants: jsonVariants, style: legacyStyle
+    } = jsonItem
+
+    let styles = null
+    if(legacyStyle !== undefined){
+        styles = [legacyStyle.toLowerCase(), legacyStyle.toLowerCase()]
     }
-    let styles = jsonItem.style1
-            && [(jsonItem.style1 && jsonItem.style1.toLowerCase()) || null,
-                (jsonItem.style2 && jsonItem.style2.toLowerCase()) || null]
-            || [(jsonItem.style && jsonItem.style.toLowerCase() || null),
-                (jsonItem.style && jsonItem.style.toLowerCase() || null)]
+    else{
+        styles = [style1.toLowerCase(), style2.toLowerCase()]
+    }
+
+    const variants = new Map()
+    for(const jVar of jsonVariants){
+        const {
+            uniqueEntryId: vId, variation: vName, colors: vColors, storageImage: vImgUrl
+        } = jVar
+        const variant = new GiftItemVariant(vId, vName, vColors.map(c => c.toLowerCase()), vImgUrl)
+        variants.set(vId, variant);
+    }
+
+    const defaultVariant = jsonVariants[0]
 
     return new GiftItem(
-        '_' + defaultVariant.uniqueEntryId,
-        jsonItem.name.toLowerCase(),
+        `_${defaultVariant.uniqueEntryId}`,
+        name.toLowerCase(),
         defaultVariant.sell,
-        vMap,
+        variants,
         styles,
-        jsonItem.sourceSheet
+        category
     );
 }
 
 function makeVillager(jsonVillager){
-    return new Villager(
-        jsonVillager.uniqueEntryId,
-        jsonVillager.name,
-        jsonVillager.colors.map( (color) => color.toLowerCase() ),
-        jsonVillager.styles.map( (style) => style.toLowerCase() ),
-        jsonVillager.iconImage
-    );
+    const {uniqueEntryId: id, name, styles, colors, iconImage: imageUrl} = jsonVillager
+    const colorPrefs = colors.map( (color) => color.toLowerCase() )
+    const stylePrefs = styles.map( (style) => style.toLowerCase() )
+
+    return new Villager(id, name, colorPrefs, stylePrefs, imageUrl);
 }
 
 function makeCatalog(jsonItems, inclCats){

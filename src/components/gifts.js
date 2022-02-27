@@ -27,14 +27,15 @@ class GiftJudgements extends React.Component {
         let judgedContent = <div>No one liked this.</div>;
         if(judgements.get(vId).length > 0){
             judgedContent = judgements.get(vId).map( j => {
+                const {who, liked, style, color} = j
                 return (
-                    j.liked && 
+                    liked && 
                     <Recipient
-                        value={j.who}
+                        value={who}
                         selected={false}
-                        key={'j_'+j.who.id}
+                        key={'j_'+who.id}
                         toggleCallback={nullCallback}
-                        reason={j.reason} />
+                        reason={[...style, ...color]}/>
                 )
             });
         }
@@ -64,10 +65,10 @@ class GiftSearchResult extends React.Component {
                 || (sellPrice >= 250 && <GiftBoxIcon/>)
                 || ''
         };
-        const style1Hint = <div className={`quality style-${item.style[0]}`}>{item.style[0]}</div>;
+        const style1Hint = <div className={`quality style-${item.styles[0]}`}>{item.styles[0]}</div>;
         let style2Hint = null;
-        if(item.style[1] && item.style[1] !== item.style[0]){
-            style2Hint = <div className={`quality style-${item.style[1]}`}>{item.style[1]}</div>;
+        if(item.styles[1] && item.styles[1] !== item.styles[0]){
+            style2Hint = <div className={`quality style-${item.styles[1]}`}>{item.styles[1]}</div>;
         }
         if(this.props.showVariants === false){
             return (
@@ -93,11 +94,10 @@ class GiftSearchResult extends React.Component {
             const variantIds = Array.from(item.variants.keys());
             for(const vId of variantIds){
                 judgements.set(vId, recipients.map( recipient => {
-                    const {liked, reason} = recipient.checkGift(item, vId);
+                    const matches = recipient.checkGift(item, vId);
                     return {
                         who: recipient,
-                        liked: liked,
-                        reason: reason
+                        ...matches
                     };
                 }).filter( result => result.liked ));
             }

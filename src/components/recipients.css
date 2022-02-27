@@ -54,6 +54,11 @@
   color: #81725A;
 }
 
+.judgements .vlgr ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
 /*
 @media (min-width:480px){
   .vlgr {

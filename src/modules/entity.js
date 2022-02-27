@@ -40,7 +40,7 @@ class GiftItem {
     get name() { return this._name; }
     get sell() { return this._sellPrice; }
     get variants() { return this._variants; }
-    get style() { return this._style; }
+    get styles() { return this._style; }
     get category() { return this._category; }
     get imgUrl() {
         return this.defaultVariant.imgUrl;
@@ -152,28 +152,28 @@ class Villager{
     get iconUrl() { return this._iconUrl; }
 
     checkGift(item, variantId){
-        const result = this.checkGiftStyle(item);
-        return (result.liked && result) || this.checkGiftColors(item, variantId);
+        const styleMatches = this.checkGiftStyle(item)
+        const colorMatches = this.checkGiftColors(item, variantId)
 
+        const matches = {
+            style: styleMatches,
+            color: colorMatches,
+            liked: styleMatches.length > 0 || colorMatches.length > 0
+        }
+        return matches
     }
+
     checkGiftStyle(item){
-        if(this.stylePrefs.includes(item.style[0])){
-            return { liked: true, reason: item.style[0] };
-        }
-        else if(this.stylePrefs.includes(item.style[1])){
-            return { liked: true, reason: item.style[1] };
-        }
-        return { liked: false };
+        const matches = item.styles.filter( s => { return this.stylePrefs.includes(s) } )
+        return [...new Set(matches)]
     }
+
     checkGiftColors(item, variantId){
-        const likesColor = (color) => this.colorPrefs.includes(color);
-        for(const c of item.variants.get(variantId).colors){
-            if(likesColor(c)){
-                return { liked: true, reason: c };
-            }
-        }
-        return { liked: false };
+        const variant = item.variants.get(variantId)
+        const matches = variant.colors.filter( c => { return this.colorPrefs.includes(c) } )
+        return [...new Set(matches)]
     }
+
     static sortComparator(a, b){
         if (a.name < b.name) {
              return -1;

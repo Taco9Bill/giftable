@@ -41,7 +41,15 @@ class Recipient extends React.Component {
 
         let reason = null;
         if(this.props.reason){
-            reason = <div>{this.props.reason}</div>
+            reason = (
+                <ul>
+                  {
+                    this.props.reason.map( attr => {
+                        return <li>{attr}</li>
+                    })
+                  }
+                </ul>
+            )
         }
         return (
             <div className={`vlgr${this.props.selected ? ' selected': ''}`}>
@@ -50,6 +58,7 @@ class Recipient extends React.Component {
               {style1Hint}
               {style2Hint}
               {colorHint}
+              {reason}
             </div>
         );
     }

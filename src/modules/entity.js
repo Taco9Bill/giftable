@@ -1,30 +1,3 @@
-let Category = {};
-(function (Category) {
-    Category["Accessories"] = "Accessories";
-    Category["Art"] = "Art";
-    Category["Bags"] = "Bags";
-    Category["Bottoms"] = "Bottoms";
-    Category["DressUp"] = "Dress-Up";
-    Category["Fencing"] = "Fencing";
-    Category["Floors"] = "Floors";
-    Category["Fossils"] = "Fossils";
-    Category["Headwear"] = "Headwear";
-    Category["Housewares"] = "Housewares";
-    Category["Miscellaneous"] = "Miscellaneous";
-    Category["Music"] = "Music";
-    Category["Other"] = "Other";
-    Category["Photos"] = "Photos";
-    Category["Posters"] = "Posters";
-    Category["Rugs"] = "Rugs";
-    Category["Shoes"] = "Shoes";
-    Category["Socks"] = "Socks";
-    Category["Tools"] = "Tools";
-    Category["Tops"] = "Tops";
-    Category["Umbrellas"] = "Umbrellas";
-    Category["WallMounted"] = "Wall-mounted";
-    Category["Wallpapers"] = "Wallpapers";
-})(Category);
-
 class GiftItem {
     constructor(id, name, sellPrice, variants, style, category){
         this._id = id;
@@ -83,7 +56,7 @@ class Catalog {
     findByName(name) {
         let found = null;
         for(const item of this._items){
-            const isMatch = item.name.toLowerCase() == name.toLowerCase();
+            const isMatch = item.name.toLowerCase() === name.toLowerCase();
             if (isMatch){
                 found = item;
                 break;
@@ -196,7 +169,7 @@ class Roster {
     findByName(name){
         let found = null;
         for(const villager of this._members){
-            const isMatch = villager.name.toLowerCase() == name.toLowerCase();
+            const isMatch = villager.name.toLowerCase() === name.toLowerCase();
             if (isMatch){
                 console.log(villager.name + "==" + name + " : " + isMatch);
                 found = villager;
@@ -230,4 +203,4 @@ class Roster {
     }
 }
 
-export {Catalog, Category, GiftItem, GiftItemVariant, Roster, Villager};
+export {Catalog, GiftItem, GiftItemVariant, Roster, Villager};

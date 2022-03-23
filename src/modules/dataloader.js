@@ -6,10 +6,32 @@ import {
     Roster
     } from 'modules/entity.js';
 
-const getImageUrl = (jsonVariant) => {
-    /* TODO: currently limited to clothes and bags */
-    return jsonVariant.storageImage;
-};
+let Category = {};
+(function (Category) {
+    Category["Accessories"] = "Accessories";
+    Category["Art"] = "Art";
+    Category["Bags"] = "Bags";
+    Category["Bottoms"] = "Bottoms";
+    Category["DressUp"] = "Dress-Up";
+    Category["Fencing"] = "Fencing";
+    Category["Floors"] = "Floors";
+    Category["Fossils"] = "Fossils";
+    Category["Headwear"] = "Headwear";
+    Category["Housewares"] = "Housewares";
+    Category["Miscellaneous"] = "Miscellaneous";
+    Category["Music"] = "Music";
+    Category["Other"] = "Other";
+    Category["Photos"] = "Photos";
+    Category["Posters"] = "Posters";
+    Category["Rugs"] = "Rugs";
+    Category["Shoes"] = "Shoes";
+    Category["Socks"] = "Socks";
+    Category["Tools"] = "Tools";
+    Category["Tops"] = "Tops";
+    Category["Umbrellas"] = "Umbrellas";
+    Category["WallMounted"] = "Wall-mounted";
+    Category["Wallpapers"] = "Wallpapers";
+})(Category);
 
 function makeGiftItem(jsonItem) {
     const {
@@ -72,4 +94,4 @@ function makeRoster(jsonVillagers){
     return new Roster(members);
 }
 
-export {makeCatalog, makeGiftItem, makeRoster, makeVillager};
+export {Category, makeCatalog, makeGiftItem, makeRoster, makeVillager};

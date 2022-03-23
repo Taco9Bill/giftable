@@ -1,52 +1,16 @@
 import React from 'react';
-import { StyleIcon, ItemColorsIcon } from 'components/icon.js';
+import { PreferenceHints } from 'components/icon.js';
+import withJudgement from 'components/withJudgment.js';
 import './recipients.css';
 
 class RecipientLookup extends React.Component {
     render() {
+        const {value: query, onChange} = this.props
         return (
             <div className="mori-search-input">
-                <input
-                    type="text"
-                    value={this.props.value}
-                    placeholder={"Who is this gift for?"}
-                    onChange={this.props.onChange}
-                />
+                <input type="text" value={query} placeholder={"Who is this gift for?"} onChange={onChange} />
             </div>
         );
-    }
-}
-
-class MatchedPreferenceHints extends React.Component {
-
-    render(){
-        const {attributes} = this.props
-        return(
-            <ul>
-            {
-              attributes.map( attr => {
-                return (<li key={attr}>{attr}</li>)
-              })
-            }
-            </ul>
-        )
-    }
-}
-
-class PreferenceHints extends React.Component {
-
-    render(){
-        const {styles, colors} = this.props
-        const [style1, style2] = styles
-        return (
-            <div>
-                <StyleIcon styleName={style1} />
-            {
-              style1 != style2 && <StyleIcon styleName={style2} /> || null
-            }
-                <ItemColorsIcon colors={colors} />
-            </div>
-        )
     }
 }
 
@@ -63,83 +27,85 @@ class Recipient extends React.Component {
     render() {
         const {
             value: recipient,
-            reason: reasons,
             showHints = false,
             selected = false
-
         } = this.props;
 
         return (
             <div className={`vlgr${selected ? ' selected': ''}`}>
               <img src={recipient.iconUrl} alt={recipient.name} onClick={this.handleClick}/>
               <span className="name">{recipient.name}</span>
-              { showHints && <PreferenceHints styles={recipient.stylePrefs} colors={recipient.colorPrefs} /> || null}
-              { reasons && <MatchedPreferenceHints attributes={reasons} /> || null}
+              { (showHints && <PreferenceHints styles={recipient.stylePrefs} colors={recipient.colorPrefs} />) || null }
+              { this.props.children }
             </div>
         );
     }
 }
 
-class RecipientList extends React.Component {
+const RecipientWithJudgement = withJudgement(Recipient)
+
+class Recipients extends React.Component {
+    render(){
+        const {members, showHints = false, toggleCallback} = this.props
+        return (
+            <div className="vResults">
+            { 
+              members.map( member => {
+                return (
+                  <div className="vEntry" key={member.id}>
+                      <Recipient value={member} selected={true} showHints={showHints} toggleCallback={toggleCallback} key={member.id}/>
+                  </div>
+                );
+              })
+            }
+            </div>
+        )
+    }
+}
+
+class RosterSearchResults extends React.Component {
     render() {
-        const name = this.props.recipientName;
-        const selectedList = this.props.selected;
-        if(!name) {
+        const {query, members: roster, excludes, toggleCallback} = this.props
+        if(!query){
+            return null
+        }
+        const exclIds = excludes.map( villager => villager.id )
+        const found = roster.findByNameLike(query).filter( villager => {
+            return !exclIds.includes(villager.id)
+        })
+        console.log('search results:', found)
+        if(found.length === 0){
             return (
                 <div className="vResults">
-                { 
-                    selectedList.map( v => {
-                        return (
-                            <div className="vEntry" key={v.id}>
-                                <Recipient
-                                    value={v}
-                                    selected={true}
-                                    toggleCallback={this.props.toggleCallback}
-                                    showHints={true} />
-                            </div>
-                        );
-                    })
-                }
+                    <span>No villager with that name found.</span>
                 </div>
-            );
+            )
         }
-        const found = this.props.members.findByNameLike(this.props.recipientName);
-        if(!found){
-            return (<span>No villager with that name found.</span>);
-        }
-
         return (
             <div className="vResults">
             {
-                found.filter( v => {
-                    return !selectedList.includes(v);
-                }).map( v => {
-                    return (
-                        <div className="vEntry" key={v.id}>
-                            <Recipient
-                                value={v}
-                                selected={false}
-                                key={v.id}
-                                toggleCallback={this.props.toggleCallback} />
-                        </div>
-                    );
-                })
-            }{ 
-                selectedList.map( v => {
-                    return (
-                        <div className="vEntry" key={v.id}>
-                            <Recipient
-                                value={v}
-                                selected={true}
-                                key={v.id}
-                                toggleCallback={this.props.toggleCallback} />
-                        </div>
-                    );
-                })
+              found.map( villager => {
+                return (
+                    <div className="vEntry" key={villager.id}>
+                        <Recipient value={villager} selected={false} toggleCallback={toggleCallback} />
+                    </div>
+                )
+              })
             }
             </div>
-        );
+        )
     }
 }
 
-export { Recipient, RecipientList, RecipientLookup };
+class Roster extends React.Component {
+    render() {
+        const { children } = this.props
+        return (
+            <div>
+                { children }
+            </div>
+        )
+    }
+}
+
+export { Recipient, RecipientWithJudgement, Recipients, Roster, RosterSearchResults, RecipientLookup };

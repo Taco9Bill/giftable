@@ -92,3 +92,30 @@
   width: 63%;
   color: #81725A;
 }
+
+.gift-selection {
+
+}
+
+.gift-selection .gift {
+  width: 5em;
+  display: inline-block;
+}
+
+.gift-selection .gift .name {
+  font-size: 0.85em;
+}
+
+.gift-selection .gift .default-color {
+  position: relative;
+}
+
+.gift-selection .gift .default-color .icons {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.gift-selection .gift .default-color > img {
+  width: 100%;
+}
